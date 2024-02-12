@@ -5,32 +5,38 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "doctor")
-public class Doctor {
+@Table(name = "patient")
+public class Patient {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "doctor_id")
+    @Column(name = "patient_id")
     private long id;
+
     private String name;
+
     private String surname;
-    private String speciality;
+
+    private String gender;
+
+    private LocalDate birthDate;
+
+    private String address;
+
     private String phoneNumber;
-    @ManyToOne
-    @JoinColumn(name="department_id")
-    private Department department;
+
     private String email;
+
     private String password;
 
-    @OneToMany(mappedBy = "doctor")
-    private List<Schedule> schedule;
-
-    @OneToMany(mappedBy = "doctor")
+    @OneToMany(mappedBy = "patient")
     private List<Records> records;
 }
