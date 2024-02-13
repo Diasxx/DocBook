@@ -1,5 +1,6 @@
 package com.example.docbook.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,7 +23,8 @@ public class Department {
     private String name;
 
     private String address;
-
-    @OneToMany(mappedBy = "department")
+    
+    @JsonIgnore
+    @OneToMany(mappedBy = "department" , cascade = CascadeType.ALL)
     private List<Doctor> doctors;
 }

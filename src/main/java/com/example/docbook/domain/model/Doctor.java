@@ -1,5 +1,6 @@
 package com.example.docbook.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,7 +23,7 @@ public class Doctor {
     private String surname;
     private String speciality;
     private String phoneNumber;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="department_id")
     private Department department;
     private String email;
