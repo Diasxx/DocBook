@@ -1,5 +1,6 @@
 package com.example.docbook.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -37,6 +38,7 @@ public class Patient {
 
     private String password;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "patient")
     private List<Records> records;
 }

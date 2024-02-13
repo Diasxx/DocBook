@@ -2,8 +2,8 @@ package com.example.docbook.domain.service;
 
 import com.example.docbook.domain.model.Department;
 import com.example.docbook.domain.model.Doctor;
+import com.example.docbook.domain.model.Patient;
 
-import javax.print.Doc;
 import java.util.List;
 
 public interface BookingService {
@@ -11,13 +11,20 @@ public interface BookingService {
     //Department
     List<Department> getAllDepartments();
     Department getDepartment(long id);
-    void saveDepartment(Department department);
-    Department ubdateDepartment(Department department);
+    Department saveDepartment(Department department);
+    Department updateDepartment(Department department);
 
     //Doctor
     List<Doctor> getAllDoctors();
     Doctor getDoctor(long id);
-    void saveDoctor(Doctor doctor);
-    Doctor ubdateDoctor(Doctor doctor);
+    Doctor saveDoctor(Doctor doctor);
+    Doctor updateDoctor(Doctor doctor);
+
+    //Patient
+
+    List<Patient> getAllPatients();
+    Patient getPatient(long id);
+    Patient savePatient(Patient patient);
+    Patient updatePatient(Patient patient);
 
 }

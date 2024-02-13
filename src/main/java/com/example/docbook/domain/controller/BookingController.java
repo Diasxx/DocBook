@@ -2,6 +2,7 @@ package com.example.docbook.domain.controller;
 
 import com.example.docbook.domain.model.Department;
 import com.example.docbook.domain.model.Doctor;
+import com.example.docbook.domain.model.Patient;
 import com.example.docbook.domain.service.BookingService;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,9 +17,8 @@ public class BookingController {
     }
 
     @PostMapping("/department")
-    public String saveDepartment(@RequestBody Department department){
-        bookingService.saveDepartment(department);
-        return department.toString() +  " saved";
+    public Department saveDepartment(@RequestBody Department department){
+        return  bookingService.saveDepartment(department);
     }
 
     @GetMapping("/department")
@@ -27,14 +27,22 @@ public class BookingController {
     }
 
     @PostMapping("/doctor")
-    public String saveDoctor(@RequestBody Doctor doctor){
-        bookingService.saveDoctor(doctor);
-        return doctor.toString() +  " saved";
+    public Doctor saveDoctor(@RequestBody Doctor doctor){
+        return bookingService.saveDoctor(doctor);
     }
 
     @GetMapping("/doctor")
     public List<Doctor> getAllDoctors(){
         return bookingService.getAllDoctors();
+    }
+
+    @PostMapping("/patient")
+    public Patient savePatient(@RequestBody Patient patient){
+        return bookingService.savePatient(patient);
+    }
+    @GetMapping("/patient")
+    public List<Patient> getAllPatients(){
+        return bookingService.getAllPatients();
     }
 
 }
