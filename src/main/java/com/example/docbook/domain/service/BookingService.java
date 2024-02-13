@@ -3,6 +3,7 @@ package com.example.docbook.domain.service;
 import com.example.docbook.domain.model.Department;
 import com.example.docbook.domain.model.Doctor;
 import com.example.docbook.domain.model.Patient;
+import com.example.docbook.domain.model.Schedule;
 
 import java.util.List;
 
@@ -26,5 +27,12 @@ public interface BookingService {
     Patient getPatient(long id);
     Patient savePatient(Patient patient);
     Patient updatePatient(Patient patient);
+
+    // Schedule
+    List<Schedule> getAllSchedules();
+    Schedule getSchedule(long id);
+    Schedule saveSchedule(Schedule schedule);
+    Schedule updateSchedule(Schedule schedule);
+
 
 }

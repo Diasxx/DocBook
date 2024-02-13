@@ -29,9 +29,11 @@ public class Doctor {
     private String email;
     private String password;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "doctor")
     private List<Schedule> schedule;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "doctor")
     private List<Records> records;
 }

@@ -3,6 +3,7 @@ package com.example.docbook.domain.controller;
 import com.example.docbook.domain.model.Department;
 import com.example.docbook.domain.model.Doctor;
 import com.example.docbook.domain.model.Patient;
+import com.example.docbook.domain.model.Schedule;
 import com.example.docbook.domain.service.BookingService;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,6 +44,15 @@ public class BookingController {
     @GetMapping("/patient")
     public List<Patient> getAllPatients(){
         return bookingService.getAllPatients();
+    }
+
+    @PostMapping("/schedule")
+    public Schedule saveSchedule(@RequestBody Schedule schedule){
+        return bookingService.saveSchedule(schedule);
+    }
+    @GetMapping("/schedule")
+    public List<Schedule> getAllSchedules(){
+        return bookingService.getAllSchedules();
     }
 
 }
