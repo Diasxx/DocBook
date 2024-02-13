@@ -14,16 +14,19 @@ public class BookingServiceImpl implements BookingService{
     private final PatientRepository patientRepository;
     private final ScheduleRepository scheduleRepository;
     private final RecordsRepository recordsRepository;
+    private final TherapyRepository therapyRepository;
     public BookingServiceImpl(DepartmentRepository departmentRepository,
                               DoctorRepository doctorRepository,
                               PatientRepository patientRepository,
                               ScheduleRepository scheduleRepository,
-                              RecordsRepository recordsRepository) {
+                              RecordsRepository recordsRepository,
+                              TherapyRepository therapyRepository) {
         this.departmentRepository = departmentRepository;
         this.doctorRepository = doctorRepository;
         this.patientRepository = patientRepository;
         this.scheduleRepository = scheduleRepository;
         this.recordsRepository=recordsRepository;
+        this.therapyRepository=therapyRepository;
     }
 
     //Department
@@ -139,5 +142,28 @@ public class BookingServiceImpl implements BookingService{
     @Override
     public Records updateRecords(Records records) {
         return recordsRepository.save(records);
+    }
+
+
+
+    // Therapy
+    @Override
+    public List<Therapy> getAllTherapy() {
+        return therapyRepository.findAll();
+    }
+
+    @Override
+    public Therapy getTherapy(long id) {
+        return therapyRepository.getReferenceById(id);
+    }
+
+    @Override
+    public Therapy saveTherapy(Therapy therapy) {
+        return therapyRepository.save(therapy);
+    }
+
+    @Override
+    public Therapy updateTherapy(Therapy therapy) {
+        return therapyRepository.save(therapy);
     }
 }

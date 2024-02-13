@@ -68,4 +68,14 @@ public class BookingController {
         return bookingService.getAllRecords();
     }
 
+
+    @PostMapping("/therapy")
+    public Therapy saveTherapy(@RequestBody Therapy therapy){
+        return bookingService.saveTherapy(therapy);
+    }
+    @GetMapping("/therapy")
+    public List<Therapy> getAllTherapy(){
+        return bookingService.getAllTherapy();
+    }
+
 }

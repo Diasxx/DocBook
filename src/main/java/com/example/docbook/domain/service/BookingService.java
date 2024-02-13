@@ -38,4 +38,11 @@ public interface BookingService {
     Records updateRecords(Records records);
 
 
+    // Therapy
+    List<Therapy> getAllTherapy();
+    Therapy getTherapy(long id);
+    Therapy saveTherapy(Therapy therapy);
+    Therapy updateTherapy(Therapy therapy);
+
+
 }
