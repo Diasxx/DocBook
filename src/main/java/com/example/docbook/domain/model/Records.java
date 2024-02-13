@@ -27,10 +27,6 @@ public class Records {
     @JoinColumn(name = "doctor_id")
     private Doctor doctor;
 
-    @OneToOne
-    @JoinColumn(name = "therapy_id")
-    private Therapy therapy;
-
     private LocalDateTime dateAndTime;
 
 }

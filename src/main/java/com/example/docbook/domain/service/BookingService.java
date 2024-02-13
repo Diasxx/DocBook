@@ -37,12 +37,6 @@ public interface BookingService {
     Records saveRecords(Records records);
     Records updateRecords(Records records);
 
-
-    // Therapy
-    List<Therapy> getAllTherapy();
-    Therapy getTherapy(long id);
-    Therapy saveTherapy(Therapy therapy);
-    Therapy updateTherapy(Therapy therapy);
-
+    
 
 }
