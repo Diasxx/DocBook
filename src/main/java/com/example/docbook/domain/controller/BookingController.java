@@ -1,9 +1,6 @@
 package com.example.docbook.domain.controller;
 
-import com.example.docbook.domain.model.Department;
-import com.example.docbook.domain.model.Doctor;
-import com.example.docbook.domain.model.Patient;
-import com.example.docbook.domain.model.Schedule;
+import com.example.docbook.domain.model.*;
 import com.example.docbook.domain.service.BookingService;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +24,8 @@ public class BookingController {
         return bookingService.getAllDepartments();
     }
 
+
+
     @PostMapping("/doctor")
     public Doctor saveDoctor(@RequestBody Doctor doctor){
         return bookingService.saveDoctor(doctor);
@@ -37,6 +36,8 @@ public class BookingController {
         return bookingService.getAllDoctors();
     }
 
+
+
     @PostMapping("/patient")
     public Patient savePatient(@RequestBody Patient patient){
         return bookingService.savePatient(patient);
@@ -46,6 +47,8 @@ public class BookingController {
         return bookingService.getAllPatients();
     }
 
+
+
     @PostMapping("/schedule")
     public Schedule saveSchedule(@RequestBody Schedule schedule){
         return bookingService.saveSchedule(schedule);
@@ -53,6 +56,16 @@ public class BookingController {
     @GetMapping("/schedule")
     public List<Schedule> getAllSchedules(){
         return bookingService.getAllSchedules();
+    }
+
+
+    @PostMapping("/records")
+    public Records saveRecords(@RequestBody Records records){
+        return bookingService.saveRecords(records);
+    }
+    @GetMapping("/records")
+    public List<Records> getAllRecords(){
+        return bookingService.getAllRecords();
     }
 
 }

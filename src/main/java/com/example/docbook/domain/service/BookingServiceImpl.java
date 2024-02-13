@@ -1,13 +1,7 @@
 package com.example.docbook.domain.service;
 
-import com.example.docbook.domain.model.Department;
-import com.example.docbook.domain.model.Doctor;
-import com.example.docbook.domain.model.Patient;
-import com.example.docbook.domain.model.Schedule;
-import com.example.docbook.domain.repo.DepartmentRepository;
-import com.example.docbook.domain.repo.DoctorRepository;
-import com.example.docbook.domain.repo.PatientRepository;
-import com.example.docbook.domain.repo.ScheduleRepository;
+import com.example.docbook.domain.model.*;
+import com.example.docbook.domain.repo.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,17 +12,18 @@ public class BookingServiceImpl implements BookingService{
     private final DepartmentRepository departmentRepository;
     private final DoctorRepository doctorRepository;
     private final PatientRepository patientRepository;
-
     private final ScheduleRepository scheduleRepository;
-
+    private final RecordsRepository recordsRepository;
     public BookingServiceImpl(DepartmentRepository departmentRepository,
                               DoctorRepository doctorRepository,
                               PatientRepository patientRepository,
-                              ScheduleRepository scheduleRepository) {
+                              ScheduleRepository scheduleRepository,
+                              RecordsRepository recordsRepository) {
         this.departmentRepository = departmentRepository;
         this.doctorRepository = doctorRepository;
         this.patientRepository = patientRepository;
         this.scheduleRepository = scheduleRepository;
+        this.recordsRepository=recordsRepository;
     }
 
     //Department
@@ -121,5 +116,28 @@ public class BookingServiceImpl implements BookingService{
     @Override
     public Schedule updateSchedule(Schedule schedule) {
         return scheduleRepository.save(schedule);
+    }
+
+
+    //Records
+
+    @Override
+    public List<Records> getAllRecords() {
+        return recordsRepository.findAll();
+    }
+
+    @Override
+    public Records getRecord(long id) {
+        return recordsRepository.getReferenceById(id);
+    }
+
+    @Override
+    public Records saveRecords(Records records) {
+        return recordsRepository.save(records);
+    }
+
+    @Override
+    public Records updateRecords(Records records) {
+        return recordsRepository.save(records);
     }
 }
