@@ -1,8 +1,7 @@
 package com.example.docbook.domain.controller;
 
-import com.example.docbook.domain.model.Department;
 import com.example.docbook.domain.model.Doctor;
-import com.example.docbook.domain.service.BookingService;
+import com.example.docbook.domain.service.DoctorService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,20 +11,20 @@ import java.util.List;
 
 @RestController
 public class DoctorController {
-    private final BookingService bookingService;
+    private final DoctorService doctorService;
 
-    public DoctorController(BookingService bookingService) {
-        this.bookingService = bookingService;
+    public DoctorController(DoctorService doctorService) {
+        this.doctorService = doctorService;
     }
 
     @PostMapping("/doctor")
     public Doctor saveDoctor(@RequestBody Doctor doctor){
-        return bookingService.saveDoctor(doctor);
+        return doctorService.saveDoctor(doctor);
     }
 
     @GetMapping("/doctor")
     public List<Doctor> getAllDoctors(){
-        return bookingService.getAllDoctors();
+        return doctorService.getAllDoctors();
     }
 
 }
