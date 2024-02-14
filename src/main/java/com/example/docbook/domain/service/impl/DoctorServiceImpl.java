@@ -35,5 +35,8 @@ public class DoctorServiceImpl implements DoctorService {
         return updateDoctor(doctor);
     }
 
-
+    @Override
+    public void deleteDoctor(long id) {
+        doctorRepository.deleteById(id);
+    }
 }

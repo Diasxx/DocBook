@@ -11,4 +11,6 @@ public interface RecordsService {
     Records getRecord(long id);
     Records saveRecords(Records records);
     Records updateRecords(Records records);
+    void deleteRecords(long id);
+
 }

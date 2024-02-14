@@ -9,5 +9,6 @@ public interface ScheduleService {
     Schedule getSchedule(long id);
     Schedule saveSchedule(Schedule schedule);
     Schedule updateSchedule(Schedule schedule);
+    void deleteSchedule(long id);
 
 }

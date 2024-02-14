@@ -34,5 +34,8 @@ public class RecordsServiceImpl implements RecordsService {
         return recordsRepository.save(records);
     }
 
-
+    @Override
+    public void deleteRecords(long id) {
+        recordsRepository.deleteById(id);
+    }
 }

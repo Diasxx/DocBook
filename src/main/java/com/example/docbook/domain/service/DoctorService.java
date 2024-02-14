@@ -9,5 +9,5 @@ public interface DoctorService {
     Doctor getDoctor(long id);
     Doctor saveDoctor(Doctor doctor);
     Doctor updateDoctor(Doctor doctor);
-
+    void deleteDoctor(long id);
 }
