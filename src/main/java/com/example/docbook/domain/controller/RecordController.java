@@ -5,25 +5,25 @@ import com.example.docbook.domain.model.Patient;
 import com.example.docbook.domain.model.Record;
 import com.example.docbook.domain.service.DoctorService;
 import com.example.docbook.domain.service.PatientService;
-import com.example.docbook.domain.service.RecordsService;
+import com.example.docbook.domain.service.RecordService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-public class RecordsController {
-    private final RecordsService recordsService;
+public class RecordController {
+    private final RecordService recordService;
     private final PatientService patientService;
     private final DoctorService doctorService;
 
-    public RecordsController(RecordsService recordsService, PatientService patientService, DoctorService doctorService) {
-        this.recordsService = recordsService;
+    public RecordController(RecordService recordService, PatientService patientService, DoctorService doctorService) {
+        this.recordService = recordService;
         this.patientService = patientService;
         this.doctorService = doctorService;
     }
 
     @PostMapping("/records")
-    public Record saveRecords(@RequestBody Record record){
+    public Record saveRecord(@RequestBody Record record){
 
         Patient patient = patientService.getPatient(record.getPatient().getId());
         Doctor doctor = doctorService.getDoctor(record.getDoctor().getId());
@@ -32,13 +32,13 @@ public class RecordsController {
         record.setPatient(patient);
         record.setDoctor(doctor);
 
-        return recordsService.saveRecords(record);
+        return recordService.saveRecord(record);
     }
 
 
     @GetMapping("/records")
     public List<Record> getAllRecords(){
-        return recordsService.getAllRecords();
+        return recordService.getAllRecords();
     }
 
 }
