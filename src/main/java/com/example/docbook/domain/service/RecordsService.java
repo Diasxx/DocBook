@@ -1,16 +1,16 @@
 package com.example.docbook.domain.service;
 
-import com.example.docbook.domain.model.*;
+import com.example.docbook.domain.model.Record;
 
 import java.util.List;
 
 public interface RecordsService {
 
-    //Records
-    List<Records> getAllRecords();
-    Records getRecord(long id);
-    Records saveRecords(Records records);
-    Records updateRecords(Records records);
+    //Record
+    List<Record> getAllRecords();
+    Record getRecord(long id);
+    Record saveRecords(Record record);
+    Record updateRecords(Record record);
     void deleteRecords(long id);
 
 }

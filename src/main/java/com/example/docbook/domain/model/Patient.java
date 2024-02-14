@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -40,5 +39,5 @@ public class Patient {
 
     @JsonIgnore
     @OneToMany(mappedBy = "patient",cascade = CascadeType.ALL)
-    private List<Records> records;
+    private List<Record> records;
 }

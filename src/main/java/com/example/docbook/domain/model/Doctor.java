@@ -35,5 +35,5 @@ public class Doctor {
 
     @JsonIgnore
     @OneToMany(mappedBy = "doctor",cascade = CascadeType.ALL)
-    private List<Records> records;
+    private List<Record> records;
 }

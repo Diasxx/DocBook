@@ -11,8 +11,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "records")
-public class Records {
+@Table(name = "record")
+public class Record {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

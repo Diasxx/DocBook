@@ -2,7 +2,7 @@ package com.example.docbook.domain.controller;
 
 import com.example.docbook.domain.model.Doctor;
 import com.example.docbook.domain.model.Patient;
-import com.example.docbook.domain.model.Records;
+import com.example.docbook.domain.model.Record;
 import com.example.docbook.domain.service.DoctorService;
 import com.example.docbook.domain.service.PatientService;
 import com.example.docbook.domain.service.RecordsService;
@@ -23,12 +23,21 @@ public class RecordsController {
     }
 
     @PostMapping("/records")
-    public Records saveRecords(@RequestBody Records records){
-        return recordsService.saveRecords(records);
+    public Record saveRecords(@RequestBody Record record){
+
+        Patient patient = patientService.getPatient(record.getPatient().getId());
+        Doctor doctor = doctorService.getDoctor(record.getDoctor().getId());
+
+
+        record.setPatient(patient);
+        record.setDoctor(doctor);
+
+        return recordsService.saveRecords(record);
     }
 
+
     @GetMapping("/records")
-    public List<Records> getAllRecords(){
+    public List<Record> getAllRecords(){
         return recordsService.getAllRecords();
     }
 
