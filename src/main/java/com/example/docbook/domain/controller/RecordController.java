@@ -6,11 +6,13 @@ import com.example.docbook.domain.model.Record;
 import com.example.docbook.domain.service.DoctorService;
 import com.example.docbook.domain.service.PatientService;
 import com.example.docbook.domain.service.RecordService;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
 public class RecordController {
     private final RecordService recordService;
     private final PatientService patientService;
@@ -22,7 +24,7 @@ public class RecordController {
         this.doctorService = doctorService;
     }
 
-    @PostMapping("/records")
+/*    @PostMapping("/records")
     public Record saveRecord(@RequestBody Record record){
 
         Patient patient = patientService.getPatient(record.getPatient().getId());
@@ -33,12 +35,13 @@ public class RecordController {
         record.setDoctor(doctor);
 
         return recordService.saveRecord(record);
-    }
+    }*/
 
 
     @GetMapping("/records")
-    public List<Record> getAllRecords(){
-        return recordService.getAllRecords();
+    public String getAllRecords(Model model){
+        model.addAttribute("records", recordService.getAllRecords());
+        return "records";
     }
 
 }

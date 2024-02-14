@@ -2,6 +2,8 @@ package com.example.docbook.domain.controller;
 
 import com.example.docbook.domain.model.Patient;
 import com.example.docbook.domain.service.PatientService;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -9,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController
+@Controller
 public class PatientController {
     private final PatientService patientService;
 
@@ -23,7 +25,8 @@ public class PatientController {
     }
 
     @GetMapping("/patient")
-    public List<Patient> getAllPatients(){
-        return patientService.getAllPatients();
+    public String getAllPatients(Model model){
+        model.addAttribute("patients", patientService.getAllPatients());
+        return "patient";
     }
 }
