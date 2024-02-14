@@ -39,6 +39,6 @@ public class Patient {
     private String password;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "patient")
+    @OneToMany(mappedBy = "patient",cascade = CascadeType.ALL)
     private List<Records> records;
 }

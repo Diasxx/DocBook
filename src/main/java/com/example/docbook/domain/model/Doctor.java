@@ -30,10 +30,10 @@ public class Doctor {
     private String password;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "doctor")
+    @OneToMany(mappedBy = "doctor",cascade = CascadeType.ALL)
     private List<Schedule> schedule;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "doctor")
+    @OneToMany(mappedBy = "doctor",cascade = CascadeType.ALL)
     private List<Records> records;
 }
