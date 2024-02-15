@@ -4,12 +4,10 @@ import com.example.docbook.domain.model.Department;
 import com.example.docbook.domain.model.Doctor;
 import com.example.docbook.domain.service.DepartmentService;
 import com.example.docbook.domain.service.DoctorService;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,16 +21,18 @@ public class DoctorController {
         this.departmentService = departmentService;
     }
 
-/*    @PostMapping("/doctor")
-    public Doctor saveDoctor(@RequestBody Doctor doctor){
-        Department department = departmentService.getDepartment(doctor.getDepartment().getId());
-        doctor.setDepartment(department);
-        return doctorService.saveDoctor(doctor);
-    }*/
+    @PostMapping("/saveDoctor")
+    public String saveDoctor(@ModelAttribute Doctor doctor,@RequestParam(name = "departmentId") long departmentId){
+        doctor.setDepartment(departmentService.getDepartment(departmentId));
+        doctorService.saveDoctor(doctor);
+        return "redirect:/doctors";
+    }
 
-    @GetMapping("/doctor")
+    @GetMapping("/doctors")
     public String getAllDoctors(Model model){
-        model.addAttribute("doctor", doctorService.getAllDoctors());
+        Doctor doctor =  new Doctor();
+        model.addAttribute("doctor", doctor);
+        model.addAttribute("doctors", doctorService.getAllDoctors());
         return "doctor";
     }
 

@@ -19,15 +19,18 @@ public class ScheduleController {
         this.doctorService = doctorService;
     }
 
-//    @PostMapping("/schedule")
-//    public Schedule saveSchedule(@RequestBody Schedule schedule){
-//        Doctor doctor = doctorService.getDoctor(schedule.getDoctor().getId());
-//        schedule.setDoctor(doctor);
-//        return scheduleService.saveSchedule(schedule);
-//    }
+    @PostMapping("/saveSchedule")
+    public String saveSchedule(@ModelAttribute Schedule schedule,@RequestParam(name = "doctorId") long doctorId){
+        schedule.setDoctor( doctorService.getDoctor(doctorId));
+        scheduleService.saveSchedule(schedule);
+        return "redirect:/schedule";
+    }
+
     @GetMapping("/schedule")
     public String getAllSchedules(Model model){
-        model.addAttribute("schedule", scheduleService.getAllSchedules());
+        Schedule schedule = new Schedule();
+        model.addAttribute("schedule",schedule);
+        model.addAttribute("schedules", scheduleService.getAllSchedules());
         return "schedule";
     }
 

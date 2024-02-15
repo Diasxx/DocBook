@@ -5,11 +5,9 @@ import com.example.docbook.domain.service.DepartmentService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 @Controller
 public class DepartmentController {
@@ -19,15 +17,18 @@ public class DepartmentController {
         this.departmentService = departmentService;
     }
 
-/*
-    @PostMapping("/department")
-    public Department saveDepartment(@RequestBody Department department){
-        return  departmentService.saveDepartment(department);
+    @PostMapping("/saveDepartment")
+    public String saveDepartment(@ModelAttribute Department department){
+
+        departmentService.saveDepartment(department);
+
+        return "redirect:/department";
     }
-*/
 
     @GetMapping("/department")
     public String getAllDepartments(Model model){
+        Department department = new Department();
+        model.addAttribute("department",department);
         model.addAttribute("departments",departmentService.getAllDepartments());
         return "departments";
     }

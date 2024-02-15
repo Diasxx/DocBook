@@ -7,6 +7,19 @@
     <title>List of Departments</title>
 </head>
 <body>
+
+<h2>Add New Department</h2>
+<form action="/saveDepartment" method="post" th:object="${department}">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" th:field="*{name}"/><br/>
+
+    <label for="address">Address:</label>
+    <input type="text" id="address" name="address" th:field="*{address}"/><br/>
+
+    <input type="submit" value="Save"/>
+</form>
+<br>
+
 <h1>List of Departments</h1>
 
 <table border="1">

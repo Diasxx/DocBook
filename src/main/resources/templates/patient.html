@@ -6,6 +6,42 @@
     <title>List of Patients</title>
 </head>
 <body>
+
+<h2>Add Patient</h2>
+<form action="#" th:action="@{/savePatient}" th:object="${patient}" method="post">
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" th:field="*{name}"><br>
+
+    <label for="surname">Surname:</label><br>
+    <input type="text" id="surname" th:field="*{surname}"><br>
+
+    <label for="gender">Gender:</label><br>
+    <select id="gender" th:field="*{gender}">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+    </select><br>
+
+    <label for="birthDate">Birth Date:</label><br>
+    <input type="date" id="birthDate" th:field="*{birthDate}"><br>
+
+    <label for="address">Address:</label><br>
+    <input type="text" id="address" th:field="*{address}"><br>
+
+    <label for="phoneNumber">Phone Number:</label><br>
+    <input type="tel" id="phoneNumber" th:field="*{phoneNumber}"><br>
+
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" th:field="*{email}"><br>
+
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" th:field="*{password}"><br>
+
+    <input type="submit" value="Submit">
+</form>
+
+<br>
+
 <h1>List of Patients</h1>
 
 <table border="1">

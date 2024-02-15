@@ -1,13 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Schedules</title>
 </head>
 <body>
+
+<h1>Schedule Form</h1>
+<form action="/saveSchedule" method="post" th:object="${schedule}">
+    <label for="doctorId">Doctor ID:</label>
+    <input type="text" id="doctorId" name="doctorId"><br><br>
+
+    <label for="date">Date:</label>
+    <input type="date" id="date" name="date" th:field="*{date}" ><br><br>
+
+    <label for="startTime">Start Time:</label>
+    <input type="time" id="startTime" name="startTime" th:field="*{startTime}" value="09:00"><br><br>
+
+    <label for="endTime">End Time:</label>
+    <input type="time" id="endTime" name="endTime" th:field="*{endTime}" value="17:00"><br><br>
+
+    <button type="submit">Submit</button>
+</form>
+
+<br>
 <h1>Schedules</h1>
-<table>
+<table border="1">
     <thead>
     <tr>
         <th>ID</th>
@@ -18,7 +38,7 @@
     </tr>
     </thead>
     <tbody>
-        <tr th:each="schedule : ${schedule}">
+        <tr th:each="schedule : ${schedules}">
             <td th:text="${schedule.id}"></td>
             <td th:text="${schedule.doctor.name}"></td> <!-- Assuming Doctor entity has a name field -->
             <td th:text="${schedule.date}"></td>

@@ -4,10 +4,7 @@ import com.example.docbook.domain.model.Patient;
 import com.example.docbook.domain.service.PatientService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,13 +16,16 @@ public class PatientController {
         this.patientService = patientService;
     }
 
-    @PostMapping("/patient")
-    public Patient savePatient(@RequestBody Patient patient){
-        return patientService.savePatient(patient);
+    @PostMapping("/savePatient")
+    public String savePatient(@ModelAttribute Patient patient){
+        patientService.savePatient(patient);
+        return "redirect:/patient";
     }
 
     @GetMapping("/patient")
     public String getAllPatients(Model model){
+        Patient patient = new Patient();
+        model.addAttribute("patient",patient);
         model.addAttribute("patients", patientService.getAllPatients());
         return "patient";
     }

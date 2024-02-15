@@ -6,6 +6,24 @@
     <title>List of Patient Records</title>
 </head>
 <body>
+
+<h2>Create New Record</h2>
+<form action="/saveRecords" method="post" th:object="${record}">
+    <label for="patientId">Patient ID:</label>
+    <input type="text" id="patientId" name="patientId"  />
+    <br/>
+    <label for="doctorId">Doctor ID:</label>
+    <input type="text" id="doctorId" name="doctorId"  />
+    <br/>
+
+     <label for="dateAndTime">Date and Time:</label>
+    <input type="datetime-local" id="dateAndTime" name="dateAndTime" th:value="*{dateAndTime}" />
+    <br/>
+    <button type="submit">Save Record</button>
+</form>
+
+<br>
+
 <h1>List of Patient Records</h1>
 
 <table border="1">

@@ -7,6 +7,43 @@
   <title>List of Doctors</title>
 </head>
 <body>
+
+<h2>Doctor Form</h2>
+
+<form action="#" th:action="@{/saveDoctor}" th:object="${doctor}" method="post">
+  <div>
+    <label>Name:</label>
+    <input type="text" th:field="*{name}" required>
+  </div>
+  <div>
+    <label>Surname:</label>
+    <input type="text" th:field="*{surname}" required>
+  </div>
+  <div>
+    <label>Speciality:</label>
+    <input type="text" th:field="*{speciality}" required>
+  </div>
+  <div>
+    <label>Phone Number:</label>
+    <input type="text" th:field="*{phoneNumber}" required>
+  </div>
+  <div>
+    <label>Email:</label>
+    <input type="email" th:field="*{email}" required>
+  </div>
+  <div>
+    <label>Password:</label>
+    <input type="password" th:field="*{password}" required>
+  </div>
+  <div>
+    <label>Department Id:</label>
+      <input type="text" name="departmentId">
+  </div>
+  <button type="submit">Save Doctor</button>
+</form>
+
+
+<br>
 <h1>List of Doctors</h1>
 
 <table border="1">
@@ -22,7 +59,7 @@
   </tr>
   </thead>
   <tbody>
-  <tr th:each="doctor : ${doctor}">
+  <tr th:each="doctor : ${doctors}">
     <td th:text="${doctor.id}"></td>
     <td th:text="${doctor.name}"></td>
     <td th:text="${doctor.surname}"></td>

@@ -24,22 +24,19 @@ public class RecordController {
         this.doctorService = doctorService;
     }
 
-/*    @PostMapping("/records")
-    public Record saveRecord(@RequestBody Record record){
-
-        Patient patient = patientService.getPatient(record.getPatient().getId());
-        Doctor doctor = doctorService.getDoctor(record.getDoctor().getId());
-
-
-        record.setPatient(patient);
-        record.setDoctor(doctor);
-
-        return recordService.saveRecord(record);
-    }*/
+    @PostMapping("/saveRecords")
+    public String saveRecord(@ModelAttribute Record record, @RequestParam long doctorId,@RequestParam long patientId){
+        record.setPatient(patientService.getPatient(patientId));
+        record.setDoctor(doctorService.getDoctor(doctorId));
+        recordService.saveRecord(record);
+        return "redirect:/records";
+    }
 
 
     @GetMapping("/records")
     public String getAllRecords(Model model){
+        Record record = new Record();
+        model.addAttribute("record",record);
         model.addAttribute("records", recordService.getAllRecords());
         return "records";
     }
