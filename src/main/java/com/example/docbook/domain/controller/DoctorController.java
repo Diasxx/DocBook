@@ -28,11 +28,11 @@ public class DoctorController {
         return "redirect:/doctors";
     }
 
-    @GetMapping("/doctors")
-    public String getAllDoctors(Model model){
+    @GetMapping("/department/{departmentId}")
+    public String getAllDoctors(Model model,@PathVariable(name = "departmentId") Long departmentId){
         Doctor doctor =  new Doctor();
         model.addAttribute("doctor", doctor);
-        model.addAttribute("doctors", doctorService.getAllDoctors());
+        model.addAttribute("doctors", doctorService.getAllDoctorsByDepartmentId(departmentId));
         return "doctor";
     }
 

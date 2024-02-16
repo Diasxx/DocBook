@@ -25,7 +25,7 @@ public class DepartmentController {
         return "redirect:/department";
     }
 
-    @GetMapping("/department")
+    @GetMapping("/")
     public String getAllDepartments(Model model){
         Department department = new Department();
         model.addAttribute("department",department);
