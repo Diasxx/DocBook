@@ -26,11 +26,11 @@ public class ScheduleController {
         return "redirect:/schedule";
     }
 
-    @GetMapping("/schedule")
-    public String getAllSchedules(Model model){
+    @GetMapping("/doctor/{doctorId}")
+    public String getAllSchedules(Model model,@PathVariable(name = "doctorId") long doctorId){
         Schedule schedule = new Schedule();
         model.addAttribute("schedule",schedule);
-        model.addAttribute("schedules", scheduleService.getAllSchedules());
+        model.addAttribute("schedules", scheduleService.getSchedulesByDoctorId(doctorId));
         return "schedule";
     }
 

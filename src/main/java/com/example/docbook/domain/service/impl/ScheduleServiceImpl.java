@@ -22,6 +22,11 @@ public class ScheduleServiceImpl implements ScheduleService {
     }
 
     @Override
+    public List<Schedule> getSchedulesByDoctorId(long id) {
+        return scheduleRepository.getSchedulesByDoctorId(id);
+    }
+
+    @Override
     public Schedule getSchedule(long id) {
         return scheduleRepository.getReferenceById(id);
     }
