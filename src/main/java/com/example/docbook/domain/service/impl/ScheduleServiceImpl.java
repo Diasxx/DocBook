@@ -5,6 +5,7 @@ import com.example.docbook.domain.repo.ScheduleRepository;
 import com.example.docbook.domain.service.ScheduleService;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -24,6 +25,12 @@ public class ScheduleServiceImpl implements ScheduleService {
     @Override
     public List<Schedule> getSchedulesByDoctorId(long id) {
         return scheduleRepository.getSchedulesByDoctorId(id);
+    }
+
+
+    @Override
+    public List<Schedule> getSchedulesByDateIsGreaterThanAndDoctorId(LocalDate localDate, long doctorId) {
+        return scheduleRepository.getSchedulesByDateIsGreaterThanAndAndDoctor_Id(localDate,doctorId);
     }
 
     @Override

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -29,8 +30,10 @@ public class ScheduleController {
     @GetMapping("/doctor/{doctorId}")
     public String getAllSchedules(Model model,@PathVariable(name = "doctorId") long doctorId){
         Schedule schedule = new Schedule();
+        List<Schedule> isGreaterThanAndDoctorId = scheduleService.getSchedulesByDateIsGreaterThanAndDoctorId(LocalDate.now().minusDays(1),doctorId);
+
         model.addAttribute("schedule",schedule);
-        model.addAttribute("schedules", scheduleService.getSchedulesByDoctorId(doctorId));
+        model.addAttribute("schedules", isGreaterThanAndDoctorId);
         return "schedule";
     }
 
