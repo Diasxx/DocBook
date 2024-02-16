@@ -24,16 +24,18 @@ public class ScheduleController {
     public String saveSchedule(@ModelAttribute Schedule schedule,@RequestParam(name = "doctorId") long doctorId){
         schedule.setDoctor( doctorService.getDoctor(doctorId));
         scheduleService.saveSchedule(schedule);
-        return "redirect:/schedule";
+        return "redirect:/doctor/"+doctorId;
     }
 
     @GetMapping("/doctor/{doctorId}")
     public String getAllSchedules(Model model,@PathVariable(name = "doctorId") long doctorId){
+
         Schedule schedule = new Schedule();
-        List<Schedule> isGreaterThanAndDoctorId = scheduleService.getSchedulesByDateIsGreaterThanAndDoctorId(LocalDate.now().minusDays(1),doctorId);
+        LocalDate dateBeforeToday = LocalDate.now().minusDays(1);
 
         model.addAttribute("schedule",schedule);
-        model.addAttribute("schedules", isGreaterThanAndDoctorId);
+        model.addAttribute("schedules", scheduleService.getSchedulesByDateAndDoctor(dateBeforeToday,doctorId));
+
         return "schedule";
     }
 

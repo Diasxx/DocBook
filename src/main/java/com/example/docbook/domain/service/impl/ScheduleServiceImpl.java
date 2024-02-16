@@ -29,8 +29,8 @@ public class ScheduleServiceImpl implements ScheduleService {
 
 
     @Override
-    public List<Schedule> getSchedulesByDateIsGreaterThanAndDoctorId(LocalDate localDate, long doctorId) {
-        return scheduleRepository.getSchedulesByDateIsGreaterThanAndAndDoctor_Id(localDate,doctorId);
+    public List<Schedule> getSchedulesByDateAndDoctor(LocalDate localDate, long doctorId) {
+        return scheduleRepository.getSchedulesByDateIsGreaterThanAndDoctor_Id(localDate,doctorId);
     }
 
     @Override
