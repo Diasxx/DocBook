@@ -24,5 +24,5 @@ public class DepartmentController {
 
         return "redirect:/department";
     }
-    
+
 }
