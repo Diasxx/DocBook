@@ -2,6 +2,8 @@ package com.example.docbook.domain.service;
 
 import com.example.docbook.domain.model.Record;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface RecordService {

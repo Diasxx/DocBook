@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,19 +30,11 @@
 <table border="1">
     <thead>
     <tr>
-        <th>Record ID</th>
-        <th>Patient Name</th>
-        <th>Doctor Name</th>
-        <th>Date and Time</th>
+        <th th:each="sch : ${doctorSchedule}" th:text="${sch.date}" ></th>
     </tr>
     </thead>
     <tbody>
-    <!-- Loop through patient records and display information -->
-
     <tr th:each="record : ${records}">
-        <td th:text="${record.id}"></td>
-        <td th:text="${record.patient.name}"></td>
-        <td th:text="${record.doctor.name}"></td>
         <td th:text="${record.dateAndTime}"></td>
     </tr>
     </tbody>

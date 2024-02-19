@@ -25,4 +25,12 @@ public class DepartmentController {
         return "redirect:/department";
     }
 
+    @GetMapping("/")
+    public String getAllDepartments(Model model){
+        Department department = new Department();
+        model.addAttribute("department",department);
+        model.addAttribute("departments",departmentService.getAllDepartments());
+        return "departments";
+    }
+
 }
