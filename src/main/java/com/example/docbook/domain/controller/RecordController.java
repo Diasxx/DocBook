@@ -40,6 +40,7 @@ public class RecordController {
     }
 
 
+
     @GetMapping("/records")
     public String getAllRecords(Model model){
         Record record = new Record();
