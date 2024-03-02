@@ -1,4 +1,4 @@
-package com.example.docbook.domain.controller;
+package com.example.docbook.view.controller;
 
 import com.example.docbook.domain.model.Department;
 import com.example.docbook.domain.model.Doctor;
