@@ -1,9 +1,6 @@
 package com.example.docbook.view.controller;
 
-import com.example.docbook.domain.model.Doctor;
-import com.example.docbook.domain.model.Patient;
 import com.example.docbook.domain.model.Record;
-import com.example.docbook.domain.model.Schedule;
 import com.example.docbook.domain.service.DoctorService;
 import com.example.docbook.domain.service.PatientService;
 import com.example.docbook.domain.service.RecordService;
@@ -11,10 +8,6 @@ import com.example.docbook.domain.service.ScheduleService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.List;
 
 @Controller
 public class RecordController {
