@@ -32,8 +32,4 @@ public class Doctor {
     @JsonIgnore
     @OneToMany(mappedBy = "doctor",cascade = CascadeType.ALL)
     private List<Schedule> schedule;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "doctor",cascade = CascadeType.ALL)
-    private List<Record> records;
 }

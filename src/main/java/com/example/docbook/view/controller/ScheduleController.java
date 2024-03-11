@@ -22,7 +22,7 @@ public class ScheduleController {
 
     @PostMapping("/saveSchedule")
     public String saveSchedule(@ModelAttribute Schedule schedule,@RequestParam(name = "doctorId") long doctorId){
-        schedule.setDoctor( doctorService.getDoctor(doctorId));
+        //schedule.setDoctor( doctorService.getDoctor(doctorId));
         scheduleService.saveSchedule(schedule);
         return "redirect:/doctor/"+doctorId;
     }

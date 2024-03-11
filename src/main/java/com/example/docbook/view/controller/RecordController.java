@@ -27,7 +27,7 @@ public class RecordController {
     @PostMapping("/saveRecords")
     public String saveRecord(@ModelAttribute Record record, @RequestParam long doctorId,@RequestParam long patientId){
         record.setPatient(patientService.getPatient(patientId));
-        record.setDoctor(doctorService.getDoctor(doctorId));
+        // record.setDoctor(doctorService.getDoctor(doctorId));
         recordService.saveRecord(record);
         return "redirect:/records";
     }

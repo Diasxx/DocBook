@@ -24,8 +24,9 @@ public class Record {
     private Patient patient;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "doctor_id")
-    private Doctor doctor;
+    @JoinColumn(name = "schedule_id")
+    private Schedule schedule;
+
 
     private LocalDateTime dateAndTime;
 
