@@ -39,7 +39,7 @@ public class RecordController {
         Record record = new Record();
         model.addAttribute("doctorSchedule",scheduleService.getSchedulesByDoctorId(1));
         model.addAttribute("record",record);
-        model.addAttribute("records",recordService.getAllRecords());
+        model.addAttribute("records",recordService.getRecordByScheduleId(8));
         return "records";
     }
 

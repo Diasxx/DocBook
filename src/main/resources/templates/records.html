@@ -33,11 +33,16 @@
         <th th:each="sch : ${doctorSchedule}" th:text="${sch.date}" ></th>
     </tr>
     </thead>
+</table>
+
+<table border="1">
+
     <tbody>
-    <tr th:each="record : ${records}">
-        <td th:text="${record.dateAndTime}"></td>
+    <tr th:each="r : ${records}">
+        <td th:text="${r.dateAndTime.hour} + ' : ' + ${r.dateAndTime.minute}"></td>
     </tr>
     </tbody>
 </table>
+
 </body>
 </html>

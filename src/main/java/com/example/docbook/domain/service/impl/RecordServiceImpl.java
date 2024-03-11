@@ -1,6 +1,7 @@
 package com.example.docbook.domain.service.impl;
 
 import com.example.docbook.domain.model.Record;
+import com.example.docbook.domain.model.Schedule;
 import com.example.docbook.domain.repo.*;
 import com.example.docbook.domain.service.RecordService;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,11 @@ public class RecordServiceImpl implements RecordService {
     @Override
     public List<Record> getAllRecords() {
         return recordRepository.findAll();
+    }
+
+    @Override
+    public List<Record> getRecordByScheduleId(long id) {
+        return recordRepository.getRecordByScheduleId(id);
     }
 
     @Override
