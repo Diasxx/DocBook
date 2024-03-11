@@ -47,5 +47,27 @@
         </tr>
     </tbody>
 </table>
+
+<br>
+<hr>
+<br>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th th:each="sch : ${schedules}" th:text="${sch.date}" ></th>
+    </tr>
+    </thead>
+</table>
+
+<table border="1">
+
+    <tbody>
+    <tr th:each="sch : ${schedules}">
+        <td th:each="r : ${sch.records}" th:text="${r.dateAndTime.hour} + ' : ' + (${r.dateAndTime.minute} == 0 ? '00' : ${r.dateAndTime.minute})">
+    </tr>
+
+    </tbody>
+</table>
 </body>
 </html>
