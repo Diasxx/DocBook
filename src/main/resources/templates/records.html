@@ -37,10 +37,10 @@
 
 <table border="1">
 
-    <tbody>
-    <tr th:each="r : ${records}">
-        <td th:text="${r.dateAndTime.hour} + ' : ' + ${r.dateAndTime.minute}"></td>
+    <tbody><tr th:each="r : ${records}">
+        <td th:text="${r.dateAndTime.hour} + ' : ' + (${r.dateAndTime.minute} == 0 ? '00' : ${r.dateAndTime.minute})"></td>
     </tr>
+
     </tbody>
 </table>
 
