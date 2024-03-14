@@ -38,7 +38,6 @@ public class ScheduleController {
 
         model.addAttribute("schedule",schedule);
         model.addAttribute("schedules", scheduleService.getSchedulesByDateAndDoctor(dateBeforeToday,doctorId));
-        model.addAttribute("records",recordService.getRecordByScheduleId(8));
         return "schedule";
     }
 

@@ -5,6 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Schedules</title>
+    <style>
+        .schedule-container {
+            display: flex;
+            flex-wrap: nowrap; /* Prevent wrapping to next line */
+        }
+
+        .schedule {
+            flex: 0 0 auto; /* Allow flex items to grow or shrink */
+            margin-right: 20px; /* Adjust as needed */
+        }
+
+        .record-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+    </style>
 </head>
 <body>
 
@@ -52,22 +69,16 @@
 <hr>
 <br>
 
-<table border="1">
-    <thead>
-    <tr>
-        <th th:each="sch : ${schedules}" th:text="${sch.date}" ></th>
-    </tr>
-    </thead>
-</table>
+<div class="schedule-container">
+    <div class="schedule" th:each="sch : ${schedules}">
+        <h3 th:text="${sch.date}"></h3>
+        <hr>
+        <div class="record-container">
+            <h4 th:each="r : ${sch.records}" th:text="${r.dateAndTime.hour} + ' : ' + (${r.dateAndTime.minute} == 0 ? '00' : ${r.dateAndTime.minute})"></h4>
+        </div>
+    </div>
+</div>
 
-<table border="1">
 
-    <tbody>
-    <tr th:each="sch : ${schedules}">
-        <td th:each="r : ${sch.records}" th:text="${r.dateAndTime.hour} + ' : ' + (${r.dateAndTime.minute} == 0 ? '00' : ${r.dateAndTime.minute})">
-    </tr>
-
-    </tbody>
-</table>
 </body>
 </html>
