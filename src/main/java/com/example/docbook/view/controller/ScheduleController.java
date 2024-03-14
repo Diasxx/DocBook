@@ -1,6 +1,7 @@
 package com.example.docbook.view.controller;
 
 import com.example.docbook.domain.model.*;
+import com.example.docbook.domain.model.Record;
 import com.example.docbook.domain.service.DoctorService;
 import com.example.docbook.domain.service.RecordService;
 import com.example.docbook.domain.service.ScheduleService;
@@ -34,9 +35,10 @@ public class ScheduleController {
     public String getAllSchedules(Model model,@PathVariable(name = "doctorId") long doctorId){
 
         Schedule schedule = new Schedule();
+        Record record = new Record();
         LocalDate dateBeforeToday = LocalDate.now().minusDays(1);
-
         model.addAttribute("schedule",schedule);
+        model.addAttribute("record",record);
         model.addAttribute("schedules", scheduleService.getSchedulesByDateAndDoctor(dateBeforeToday,doctorId));
         return "schedule";
     }

@@ -8,41 +8,10 @@
 </head>
 <body>
 
-<h2>Create New Record</h2>
-<form action="/saveRecords" method="post" th:object="${record}">
-    <label for="patientId">Patient ID:</label>
-    <input type="text" id="patientId" name="patientId"  />
-    <br/>
-    <label for="scheduleId">Schedule ID:</label>
-    <input type="text" id="scheduleId" name="scheduleId"  />
-    <br/>
-
-     <label for="dateAndTime">Date and Time:</label>
-    <input type="datetime-local" id="dateAndTime" name="dateAndTime" th:value="*{dateAndTime}" />
-    <br/>
-    <button type="submit">Save Record</button>
-</form>
 
 <br>
 
 <h1>List of Patient Records</h1>
-
-<table border="1">
-    <thead>
-    <tr>
-        <th th:each="sch : ${doctorSchedule}" th:text="${sch.date}" ></th>
-    </tr>
-    </thead>
-</table>
-
-<table border="1">
-
-    <tbody><tr th:each="r : ${records}">
-        <td th:text="${r.dateAndTime.hour} + ' : ' + (${r.dateAndTime.minute} == 0 ? '00' : ${r.dateAndTime.minute})"></td>
-    </tr>
-
-    </tbody>
-</table>
 
 </body>
 </html>

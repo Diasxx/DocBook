@@ -25,46 +25,19 @@
 </head>
 <body>
 
-<h1>Schedule Form</h1>
-<form action="/saveSchedule" method="post" th:object="${schedule}">
-    <label for="doctorId">Doctor ID:</label>
-    <input type="text" id="doctorId" name="doctorId"><br><br>
-
-    <label for="date">Date:</label>
-    <input type="date" id="date" name="date" th:field="*{date}" ><br><br>
-
-    <label for="startTime">Start Time:</label>
-    <input type="time" id="startTime" name="startTime" th:field="*{startTime}" value="09:00"><br><br>
-
-    <label for="endTime">End Time:</label>
-    <input type="time" id="endTime" name="endTime" th:field="*{endTime}" value="17:00"><br><br>
-
-    <button type="submit">Submit</button>
+<h2>Create New Record</h2>
+<form action="/saveRecords" method="post" th:object="${record}">
+    <label for="patientId">Patient ID:</label>
+    <input type="text" id="patientId" name="patientId"  />
+    <br/>
+    <label for="scheduleId">Schedule ID:</label>
+    <input type="text" id="scheduleId" name="scheduleId"  />
+    <br/>
+    <label for="dateAndTime">Date and Time:</label>
+    <input type="datetime-local" id="dateAndTime" name="dateAndTime" th:value="*{dateAndTime}" />
+    <br/>
+    <button type="submit">Save Record</button>
 </form>
-
-<br>
-<h1>Schedules</h1>
-<table border="1">
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>Doctor</th>
-        <th>Date</th>
-        <th>Start Time</th>
-        <th>End Time</th>
-    </tr>
-    </thead>
-    <tbody>
-        <tr th:each="schedule : ${schedules}">
-            <td th:text="${schedule.id}"></td>
-            <td th:text="${schedule.doctor.name}"></td> <!-- Assuming Doctor entity has a name field -->
-            <td th:text="${schedule.date}"></td>
-            <td th:text="${schedule.startTime}"></td>
-            <td th:text="${schedule.endTime}"></td>
-        </tr>
-    </tbody>
-</table>
-
 <br>
 <hr>
 <br>

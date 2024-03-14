@@ -29,18 +29,18 @@ public class RecordController {
         record.setPatient(patientService.getPatient(patientId));
         record.setSchedule(scheduleService.getSchedule(scheduleId));
         recordService.saveRecord(record);
-        return "redirect:/records";
+        return "redirect:/";
     }
 
 
 
-    @GetMapping("/records")
+/*    @GetMapping("/records")
     public String getAllRecords(Model model){
         Record record = new Record();
         model.addAttribute("doctorSchedule",scheduleService.getSchedulesByDoctorId(1));
         model.addAttribute("record",record);
         model.addAttribute("records",recordService.getRecordByScheduleId(8));
         return "records";
-    }
+    }*/
 
 }
